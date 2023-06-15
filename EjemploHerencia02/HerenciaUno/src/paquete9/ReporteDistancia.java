@@ -11,48 +11,51 @@ import java.util.ArrayList;
  *
  * @author reroes
  */
-public class ReporteDistancia extends Reporte{
-    
+public class ReporteDistancia extends Reporte {
+
     private ArrayList<EstudianteDistancia> lista;
     private double totalMatriculaDistancia;
-    
-    public ReporteDistancia(String nombre, String carrera, String ciclo){
+
+    public ReporteDistancia(String nombre, String carrera, String ciclo) {
         super(nombre, carrera, ciclo);
-        
+
     }
-    
-    public void establecerLista(ArrayList<EstudianteDistancia> listado){
+
+    public void establecerLista(ArrayList<EstudianteDistancia> listado) {
         lista = listado;
     }
-    
-    public void establecerTotalMatriculasDistancia(){
-        
+
+    public void establecerTotalMatriculasDistancia() {
+
         for (int i = 0; i < lista.size(); i++) {
-            totalMatriculaDistancia = totalMatriculaDistancia + 
-                    lista.get(i).obtenerMatriculaDistancia();
+            totalMatriculaDistancia = totalMatriculaDistancia
+                    + lista.get(i).obtenerMatriculaDistancia();
         }
     }
-    
-    public ArrayList<EstudianteDistancia> obtenerLista(){
+
+    public ArrayList<EstudianteDistancia> obtenerLista() {
         return lista;
     }
-    
-    public double obtenerTotalMatriculasDistancia(){
+
+    public double obtenerTotalMatriculasDistancia() {
         return totalMatriculaDistancia;
     }
-    
+
     @Override
-    public String toString(){
-        
+    public String toString() {
+
         String cadena = String.format("Carrera: %s \n"
-                + "Ciclo: %s\n"
-                + "%s\n"
-                + "El total de matriculas es: %.2f\n", 
+                + "Ciclo: %s\n",
                 carrera,
-                ciclo,
-                obtenerLista(),
-                obtenerTotalMatriculasDistancia());
+                ciclo);
+        for (int i = 0; i < lista.size(); i++) {
+            cadena = String.format(" %s\n%s\n", cadena, obtenerLista().get(i));
+        }
+
+        cadena = String.format("%s\n"
+                + "El total de de matriculas es: %.2f\n", cadena,
+                 obtenerTotalMatriculasDistancia());
         return cadena;
     }
-    
+
 }
