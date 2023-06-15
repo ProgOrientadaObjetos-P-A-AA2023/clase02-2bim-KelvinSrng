@@ -67,6 +67,7 @@ public class Estudiante {
     
     @Override
     public String toString(){
+        //instanceof();
         String cadena = String.format("Nombre: %s\n"
                 + "Apellido: %s\n"
                 + "Identificación: %s\n"
